@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pay_method: MyString
+  card_number: MyString
+  expiration_date: 2020-11-30
+  card_code: 1
+  customer: one
+  shipping: one
+  order: one
+
+two:
+  pay_method: MyString
+  card_number: MyString
+  expiration_date: 2020-11-30
+  card_code: 1
+  customer: two
+  shipping: two
+  order: two

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  brand_name: MyString
+  description: MyText
+  yearofestablishement: 2020-11-30
+
+two:
+  brand_name: MyString
+  description: MyText
+  yearofestablishement: 2020-11-30

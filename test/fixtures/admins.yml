@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fname: MyString
+  lname: MyString
+  phonenumber: MyString
+  date_of_birth: 2021-08-09
+  user: one
+
+two:
+  fname: MyString
+  lname: MyString
+  phonenumber: MyString
+  date_of_birth: 2021-08-09
+  user: two
