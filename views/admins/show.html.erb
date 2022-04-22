@@ -1,0 +1,41 @@
+<div class="adminSuccess">
+   <div class="w3-card-4">
+      <div class="w3-container w3-deep-orange w3-text-white w3-center w3-wide">
+        <h2>Admin Details</h2>
+      </div>
+      
+      <p id="notice"><%= notice %></p>
+      
+      <div class="w3-center w3-wide">
+        <p>
+          <strong>First:</strong>
+          <%= @admin.fname %>
+        </p>
+        
+        <p>
+          <strong>Last:</strong>
+          <%= @admin.lname %>
+        </p>
+        
+        <p>
+          <strong>Phone:</strong>
+          <%= @admin.phonenumber %>
+        </p>
+        
+        <p>
+          <strong>DOB:</strong>
+          <%= @admin.date_of_birth %>
+        </p>
+        
+        <p>
+          <strong>User:</strong>
+          <%= @admin.user %>
+        </p>
+        
+        <div class="w3-panel w3-pale-green w3-padding-24">
+          <%= link_to 'Edit', edit_admin_path(@admin), :class => "w3-button w3-orange w3-hover-green w3-round-large w3-margin-left", :role => "button" %> 
+          <%= link_to 'Back', admins_path, :class => "w3-button w3-orange w3-hover-green w3-round-large w3-margin-left", :role => "button" %>
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+<% provide(:title, "Admin") %>
+
+<div class="w3-row">
+    <div class="w3-col w3-left w3-container" style="width:100px"></div>
+    <div class="w3-col w3-right w3-container" style="width:100px"></div>
+    <div class="w3-rest w3-container">
+      <table class="w3-table-all w3-card-4 w3-large">
+        <tr class="w3-panel w3-red">
+          <th>
+            Admin Control Area
+          </th>
+        </tr>
+        <% @users.each do |user| %>
+        <tr>
+          <th class="w3-border w3-center w3-pale-green">User ID</th>
+          <th class="w3-border w3-center w3-pale-green">First Name</th>
+          <th class="w3-border w3-center w3-pale-green">Are they an Admin?</th>
+          <th class="w3-border-top w3-border-left w3-border-bottom w3-pale-green"></th>
+          <th class="w3-border-top w3-border-bottom w3-pale-green"></th>
+          <th class="w3-border-top w3-border-right w3-border-bottom w3-pale-green"></th>
+        </tr>
+       
+        <tr>
+          <td class="w3-border w3-center"><%= user.id %></td>
+          <td class="w3-border w3-center"><%= user.fname %></td>
+          <!--<td class="w3-border"><%#= order.user.fname %></td>-->
+          <td class="w3-border w3-center"><%= user.admin %></td>
+          <%# if user_signed_in? %>
+          <td class="w3-center"><a href = "/makeadmin/<%= user.id %>", class="w3-button w3-blue w3-round-xxlarge w3-hover-red">Make <%= user.email.split('@')[0].capitalize %> Admin</a></td>
+          <td class="w3-center"><a href = "/removeadmin/<%= user.id %>", class="w3-button w3-blue w3-round-xxlarge w3-hover-red">Remove <%= user.email.split('@')[0].capitalize %> Admin</a></td>
+          <%# end %>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+</div>
+        
+<br>
+
+  <div class="w3-row">
+    <div class="w3-col w3-left w3-container" style="width:100px"></div>
+    <div class="w3-col w3-right w3-container" style="width:100px"></div>
+    <div class="w3-rest w3-container">
+      <table class="w3-table-all w3-card-4 w3-large">
+        <tr class="w3-panel w3-red">
+          <th>
+            Orders
+          </th>
+        </tr>
+          <% @orders.each do |order| %>
+          <tr>
+            <th class="w3-border w3-center w3-pale-green">Order date</th>
+            <th class="w3-border w3-center w3-pale-green">User</th>
+            <th class="w3-border w3-center w3-pale-green">Status</th>
+            <th class="w3-border-top w3-border-left w3-border-bottom w3-pale-green"></th>
+            <th class="w3-border-top w3-border-bottom w3-pale-green"></th>
+            <th class="w3-border-top w3-border-right w3-border-bottom w3-pale-green"></th>
+          </tr>
+       
+          <tr>
+            <td class="w3-border"><%= order.order_date %></td>
+            <td class="w3-border"><%= order.user_id %></td>
+            <!--<td class="w3-border"><%#= order.user.fname %></td>-->
+            <td class="w3-border"><%= order.status %></td>
+            <%# if user_signed_in? %>
+            <td class="w3-border w3-center"><%= link_to 'Show', order, :class => "w3-button w3-blue w3-round-xxlarge w3-hover-red" %></td>
+            <td class="w3-border w3-center"><%= link_to 'Edit', edit_order_path(order), :class => "w3-button w3-blue w3-round-xxlarge w3-hover-red" %></td>
+            <!--<td class="w3-border w3-center"><%#= link_to 'Delete', order, method: :destroy, data: { confirm: 'Are you sure?' }, :class => "w3-button w3-blue w3-round-xxlarge w3-hover-red" %></td>-->
+            <%# end %>
+          </tr>
+          <% end %>
+      </table>
+    </div>
+  </div>

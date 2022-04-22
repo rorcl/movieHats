@@ -1,0 +1,6 @@
+<div class="w3-container">
+    <h1>Editing Admin</h1>
+    <%= link_to 'Show', @admin, :class => "w3-button w3-orange w3-hover-green w3-round-large w3-margin-left", :role => "button" %> 
+    <%= link_to 'Back', admins_path, :class => "w3-button w3-orange w3-hover-green w3-round-large w3-margin-left", :role => "button" %>
+    <%= render 'form', admin: @admin %>
+</div>

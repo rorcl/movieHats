@@ -1,0 +1,29 @@
+<% provide(:title, "Home") %>
+
+<!-- Image header -->
+<div class="w3-container w3-center">
+  <div class="w3-display-container">
+    <h1>Welcome to our wonderful store!!</h1>
+    <h5>Come on in and browse our fabulous array of Special Movie Hats</h5>
+    <h5>We have sourced the finest collection of movie memorabilia for your pleasure</h5>
+    
+    <br>
+    <%= link_to (image_tag("madhatter.jpg", alt: "Hats", style: "width:25%")), collections_url %>
+    <!--<div class="w3-container w3-left" style="width:100px"></div>
+    <div class="w3-container w3-right" style="width:100px"></div>
+    <div class="w3-container w3-rest w3-card">
+      <%#= link_to (image_tag("madhatter.jpg", alt: "Shoes", style: "width:25%")), collections_url %>
+    </div>-->
+  </div>
+</div>
+
+<br><br>
+
+<!--Popular Products Section-->
+<div class="w3-container">
+  <div class="w3-panel w3-quarter w3-red w3-xlarge w3-center">Most Popular</div>
+  
+  <%= render 'layouts/popular' %>
+  
+  </div>
+</div>

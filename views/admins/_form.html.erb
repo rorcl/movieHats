@@ -1,0 +1,58 @@
+<div class='admins'>
+  
+  <div class="w3-card-4">
+    <div class="w3-container w3-green w3-text-white w3-center">
+      <h2>New Admin</h2>
+    </div>
+    
+    <br>
+    
+    <div class="w3-container w3-text-grey">
+
+      <%= form_for(admin) do |f| %>
+        <% if admin.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(admin.errors.count, "error") %> prohibited this admin from being saved:</h2>
+      
+            <ul>
+            <% admin.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+      
+        <div class="field">
+          <%= f.label :first %>
+          <%= f.text_field :fname %>
+        </div>
+      
+        <div class="field">
+          <%= f.label :last %>
+          <%= f.text_field :lname %>
+        </div>
+      
+        <div class="field">
+          <%= f.label :phone %>
+          <%= f.text_field :phonenumber %>
+        </div>
+      
+        <div class="field">
+          <%= f.label :dob %>
+          <%= f.date_select :date_of_birth %>
+        </div>
+      
+        <div class="field">
+          <%= f.label :user_id %>
+          <%= f.text_field :user_id %>
+        </div>
+      
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<br>

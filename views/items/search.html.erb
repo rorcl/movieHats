@@ -1,0 +1,39 @@
+<% provide(:title, "Search") %>
+
+<div class="w3-container">
+  <div class="w3-container w3-padding-32">
+    <div class="w3-container w3-quarter"></div>
+      <div class="w3-card w3-border-black w3-half">
+          <div class="w3-container w3-white w3-bottombar w3-border-black">
+            <div class="w3-panel w3-xxlarge w3-center w3-white">Your search returned the following items:<%= @search_term %></div>
+          </div>
+        <div class="w3-container w3-padding-32">
+        
+        <% if @items.length == 0  %>
+        <br>
+        <!--<h1>No products were found to match your search</h1>-->
+        <h1>Please enter a search term into the search box</h1>
+        <% end %>
+        
+        <% @items.each do |item| %>  
+        
+          <div class="w3-panel w3-card-4 w3-padding w3-third w3-margin-left w3-margin-bottom w3-center" style="width:95%"> 
+          <%= link_to (image_tag item.image_url, :style => "height:200px"), item %>
+          <h1><%= link_to item.title, item %></h1>
+          <p><%= item.description %></p>
+          <p><%= number_to_currency(item.price, :unit => "€") %></p>
+            <p>
+              <!--**********remove comments for full functionality********-->
+              <% if user_signed_in? && current_user.admin? %>
+              <%= link_to 'Edit', edit_item_path(item), :class => "button", :role => "button" %>
+              <%= link_to 'Delete', item, method: :delete, data: { confirm: 'Are you sure?' }, :class => "button", :role => "button" %>
+              <% end %>
+              <a href="/cart/<%= item.id %>" class="button">Add to Cart</a>
+            </p>
+          </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="w3-container w3-quarter"></div>   
+</div>

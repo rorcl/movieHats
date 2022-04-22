@@ -1,0 +1,17 @@
+<% provide(:title, "Collections") %>
+
+<div class="w3-container">
+  <div class="w3-container">
+    <div class="w3-panel w3-third w3-red w3-xlarge w3-center">Our Fabulous Collections</div>
+    <div class="w3-panel w3-twothird w3-white w3-xlarge w3-center"></div>
+  </div>
+  
+    <% @categories.each do |category| %>
+    
+    <!-- Category Section -->
+    <div class="w3-panel w3-card-4 w3-white w3-center w3-padding w3-quarter w3-margin-left" style="height:50%;">
+      <a href="/category/<%= category.cat_name %>"> <img src="/assets/<%= category.image %>" alt="<%= category.cat_name %>" style= "width:100%;"/> <h5><%= category.cat_name %></h5>
+    </div>  
+    
+    <% end %>
+</div>

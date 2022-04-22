@@ -1,0 +1,48 @@
+<div class="itemsShow">
+   <div class="w3-card-4">
+      <div class="w3-container w3-text-black w3-center w3-wide w3-bottombar w3-border-black">
+        <h2>Item Details</h2>
+      </div>
+      
+      <p id="notice"><%= notice %></p>
+      
+      <div class="w3-center w3-wide">
+        <p>
+          <strong>Title:</strong>
+          <%= @item.title %>
+        </p>
+        
+        <p>
+          <strong>Description:</strong>
+          <%= @item.description %>
+        </p>
+        
+        <p>
+          <strong>Price:</strong>
+          <%= @item.price %>
+        </p>
+        
+        <!--<p>
+          <strong>Image url:</strong>
+          <%#= @item.image_url %>
+        </p>-->
+        
+        <p>
+          <strong>Category:</strong>
+          <%= @item.category %>
+        </p>
+        
+        <p>
+          <strong>Brand:</strong>
+          <%= @item.brand %>
+        </p>
+        
+        <div class="w3-panel w3-padding-24">
+          <% if current_user.admin? %> 
+          <%= link_to 'Edit', edit_item_path(@item), :class => "w3-button w3-blue w3-hover-green w3-round-large w3-margin-left", :role => "button" %>
+          <% end %>
+          <%= link_to 'Back', "/items", :class => "w3-button w3-blue w3-hover-green w3-round-large w3-margin-left", :role => "button" %>
+        </div>
+      </div>
+    </div>
+</div>

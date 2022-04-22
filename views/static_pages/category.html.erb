@@ -1,0 +1,51 @@
+<% provide(:title, "Category") %>
+<% if user_signed_in? && current_user.admin? %>
+<%# if admin_signed_in? %>
+<%#= link_to 'New Item',  new_item_path, :class => "w3-button w3-orange w3-hover-green w3-round-xxlarge w3-margin-left", :role => "button" %>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<!--items container-->
+
+<div class="w3-container">
+  
+  <% @items.each do |item| %>
+ 
+  <div class="w3-container">
+    <div class="w3-panel w3-quarter"></div>
+    <!--<div class="w3-panel w3-half w3-card-4 w3-sand w3-padding w3-margin-left w3-margin-top w3-center" style="width:40%;">-->
+    <div class="w3-panel w3-half w3-card-4 w3-sand w3-padding w3-margin-left w3-margin-top w3-center">
+      <br>
+      <%= link_to (image_tag item.image_url, :class => "itemholsIm"), item %>
+      <h1><%= item.title %></h1>
+      <div class="w3-margin-left"></div>
+      <p><%= item.description %></p>
+      <p>Price <%= number_to_currency(item.price, :unit => "€") %>
+      <br>
+      Category: <%= item.category %>
+      <br>
+      Brand: <%= item.brand %></p>
+      <p>
+        <% if user_signed_in? && current_user.admin? %>-->
+        <%# if user_signed_in? %>
+        <%= link_to 'Show',  item, :class => "button", :role => "button" %>
+        <%= link_to 'Edit',  edit_item_path(item), :class => "button", :role => "button" %>
+        <%= link_to 'Delete',  item, method: :delete, data: { confirm: 'Are you sure?' }, :class => "button", :role => "button" %>
+        <% end %>
+        <a href="/cart/<%= item.id %>" class="button">Add to Cart</a>
+      </p>
+    </div>
+    <div class="w3-panel w3-quarter"></div>
+  </div>      
+    
+  </div>
+    
+  <% end %>
+  
+  <% if @items.length == 0  %>
+  <br>
+  <h2>There are currently no products in this category</h2>
+  <% end %>
+  </div>
+<br>

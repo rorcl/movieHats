@@ -1,0 +1,172 @@
+<!--<div class="w3-container">
+    <h1>Thank You</h1>
+
+<%# if @cart.empty? %>
+<h1>Your cart is empty</h1>
+<a href="/items" class="button">Continue Shopping</a>
+<%# else %>
+<!-- select top 5 from orders order by id desc -->
+<%# @orders.limit(1).order(id: :desc).each do |order| %>
+<!--You Just Placed Order No - <%#= order.id %>
+<a href='/paid/<%#= order.id %>' class="button">Pay Now</a> <a href="/items" class="button">Continue Shopping</a>
+
+<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="VU5NAEBBCTL9J">
+<input type="hidden" name="item_name" value="Order Number <%#= order.id %>">
+<input type="hidden" name="amount" value="<%#= @overalltotal %>">
+<input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+<%# end %>
+<%# end %>
+
+<div id="itemsContainer">
+    <table id="customers">
+        <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Qty</th>
+            <th>Item Total</th>
+        </tr>
+        
+        <%# total = 0 %>
+        <%# @orderitems.each do |id, quantity| %>
+        <%# item = Orderitem.find_by_id(id) %>
+        
+        <tr>
+            <td class="title"><%#= item.title %></td>
+            <td class="price"><%#= number_to_currency(item.price, :unit =>"€") %></td>
+            <td class="title"><%#= item.quantity %></td>
+            <td class="price"><%#= number_to_currency(item.quantity * item.price, :unit =>"€") %></td>
+        </tr>
+        
+        <%# total += item.quantity * item.price %>
+        <%# end %>
+         
+        <tr>
+            <td>Order Total: <%#= number_to_currency(total, :unit =>"€") %></td>
+        </tr>
+        
+        <%# shipping = 5 %>
+        <%# @overalltotal = shipping + total %>
+        <tr>
+            <td>
+                Shipping is €5
+            </td>
+            <td>
+                Your total is = <%#= number_to_currency(@overalltotal, :unit =>"€") %>
+            </td>
+        </tr>
+    </table>
+</div>
+
+</div>-->
+
+<div class="w3-container w3-padding-32">
+    <div class="w3-container w3-quarter"></div>
+    <!--<div class="w3-card w3-pale-green w3-border-black w3-half " style="border:6px solid black">-->
+    <div class="w3-card w3-border-black w3-half">
+        <div class="w3-container w3-white w3-bottombar w3-border-black">
+            <div class="w3-panel w3-xxlarge w3-center w3-white">Thanks for your Order</div>
+            <% if @cart.empty? %>
+            <div class="w3-panel w3-xlarge w3-center w3-white">Your Cart is Empty!!</div><!--<h1>Your cart is empty</h1>-->
+            <a href="/items" class="button">Continue Shopping</a>
+            <% else %>
+            <!-- select top 5 from orders order by id desc -->
+            <% @orders.limit(1).order(id: :desc).each do |order| %>
+            <div class="w3-panel w3-xlarge w3-center w3-white">You Just Placed Order No - <%= order.id %></div>
+            <!--<a href='/paid/<%#= order.id %>' class="button">Pay Now</a><a href="/items" class="button">Continue Shopping</a>-->
+            <%#= link_to "Continue Shopping", "/items", class: "w3-button w3-red w3-center w3-hover-blue w3-padding-16", :style => "width:100%" %>
+            
+        </div>
+            <%= link_to "Continue Shopping", "/items", class: "w3-bottombar w3-border-black w3-button w3-red w3-center w3-hover-blue w3-padding-16", :style => "width:100%" %>
+            <br><br>
+                
+        <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="VU5NAEBBCTL9J">
+            <input type="hidden" name="item_name" value="Order Number <%= order.id %>">
+            <input type="hidden" name="amount" value="<%= @overalltotal %>">
+            <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+            <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        </form>
+        <% end %>
+        <% end %>
+    </div>
+  <br>
+<div class="w3-container w3-quarter"></div>
+</div>
+<!--<div class="w3-container">
+    <h1>Thank You</h1>
+
+<%# if @cart.empty? %>
+<h1>Your cart is empty</h1>
+<a href="/items" class="button">Continue Shopping</a>
+<%# else %>
+<!-- select top 5 from orders order by id desc -->
+<%# @orders.limit(1).order(id: :desc).each do |order| %>
+<!--You Just Placed Order No - <%#= order.id %>
+<a href='/paid/<%#= order.id %>' class="button">Pay Now</a> <a href="/items" class="button">Continue Shopping</a>-->
+
+<!--<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="VU5NAEBBCTL9J">
+<input type="hidden" name="item_name" value="Order Number <%#= order.id %>">
+<input type="hidden" name="amount" value="<%#= @overalltotal %>">
+<input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>-->
+
+<%# end %>
+<%# end %>
+
+<div class="w3-container w3-padding-32">
+    <div class="w3-container w3-quarter"></div>
+    <!--<div class="w3-card w3-pale-green w3-border-black w3-half " style="border:6px solid black">-->
+    <div class="w3-card w3-border-black w3-half">
+        <div class="w3-container w3-white w3-bottombar w3-topbar w3-border-black">
+            <div class="w3-panel w3-xxlarge w3-center w3-white">Invoice</div>
+            <!--<div id="itemsContainer">-->
+            <table id="customers">
+                <tr>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+                    <th>Item Total</th>
+                </tr>
+                
+                <% total = 0 %>
+                <% @orderitems.each do |id, quantity| %>
+                <% item = Orderitem.find_by_id(id) %>
+                
+                <tr>
+                    <td class="title"><%= item.title %></td>
+                    <td class="price"><%= number_to_currency(item.price, :unit =>"€") %></td>
+                    <td class="title"><%= item.quantity %></td>
+                    <td class="price"><%= number_to_currency(item.quantity * item.price, :unit =>"€") %></td>
+                </tr>
+                
+                <% total += item.quantity * item.price %>
+                <% end %>
+                 
+                <tr>
+                    <td>Order Total: <%= number_to_currency(total, :unit =>"€") %></td>
+                </tr>
+                
+                <% shipping = 5 %>
+                <% @overalltotal = shipping + total %>
+                <tr>
+                    <td>
+                        Shipping is €5
+                    </td>
+                    <td>
+                        Your total is = <%= number_to_currency(@overalltotal, :unit =>"€") %>
+                    </td>
+                </tr>
+            </table><br>
+        <!--</div>-->
+        </div>
+    </div>
+</div>

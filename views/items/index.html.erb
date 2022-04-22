@@ -1,0 +1,38 @@
+<% provide(:title, "Items") %>
+
+<% if user_signed_in? && current_user.admin? %>
+<%= link_to 'New Item',  new_item_path, :class => "w3-button w3-orange w3-hover-green w3-round-xxlarge w3-margin-left", :role => "button" %>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<div class="w3-container">
+    <div class="w3-panel w3-third w3-red w3-xlarge w3-center">Items</div>
+    <div class="w3-panel w3-twothird w3-white w3-xlarge w3-center"></div>
+</div>
+
+<% @items.each do |item| %>
+<div class="w3-panel w3-card-4 w3-sand w3-padding w3-margin-left w3-center w3-quarter" style="height:700px;" >
+  <br>
+  <%= link_to (image_tag item.image_url, :class => "itemholsIm"), item %>
+  <%#= link_to (image_tag item.image_url, :class => "itemholsIm", style: "width:50%"), item %>
+  <h1><%= item.title %></h1><p><%= item.description %></p>
+  <p>Price <%= number_to_currency(item.price, :unit => "€") %>
+  <br>
+    Category: <%= item.category %>
+  <br>
+    Brand: <%= item.brand %></p>
+    <p>
+      <!--**********remove comments for full functionality********-->
+      <% if user_signed_in? && current_user.admin? %>
+      <%# if user_signed_in? %>
+      <%= link_to 'Edit',  edit_item_path(item), :class => "w3-button w3-blue w3-hover-green w3-round-large w3-margin-left", :role => "button" %>
+      <%= link_to 'Delete',  item, method: :delete, data: { confirm: 'Are you sure?' }, :class => "w3-button w3-blue w3-hover-green w3-round-large w3-margin-left", :role => "button" %>
+      <% end %>
+      <%= link_to 'Show',  item, :class => "w3-button w3-blue w3-hover-green w3-round-large w3-margin-left", :role => "button" %>
+    <a href="/cart/<%= item.id %>" class="w3-button w3-blue w3-hover-green w3-round-large w3-margin-left">Add to Cart</a>
+    </p>
+</div>
+  <% end %>
+</div>
+<br>

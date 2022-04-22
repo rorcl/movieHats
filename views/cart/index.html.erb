@@ -1,0 +1,85 @@
+<% provide(:title, "Cart") %>
+
+<div class="w3-container w3-padding-32">
+<% if @cart.empty? %>
+<div class="w3-container w3-red w3-center w3-text-white w3-xlarge w3-padding">Your cart is empty!! Click the Continue Shopping button</div>
+<% end %>
+</div>
+
+<div class="w3-container w3-padding-32">
+    <div class="w3-container w3-quarter"></div>
+    <!--<div class="w3-card w3-pale-green w3-border-black w3-half " style="border:6px solid black">-->
+    <div class="w3-card w3-border-black w3-half">
+        <div class="w3-container w3-white w3-bottombar w3-border-black">
+            <div class="w3-panel w3-xxlarge w3-center w3-white">Shopping Cart</div>
+        </div>
+  <br>
+
+        <div class="w3-container">
+        <!--<div class="cartIndex w3-container w3-center w3-third">-->
+            <div class="w3-container w3-center">
+               <!--<div class="w3-container">-->
+                <table id="customers">
+                <tr>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>-</th>
+                    <th>Quantity</th>
+                    <th>+</th>
+                    <th>Item Total</th>
+                    <th>Remove</th>
+                </tr>
+                
+                <% total=0 %>
+                <% @cart.each do |id, quantity| %>
+                <% item=Item.find_by_id(id) %>
+                <tr>
+                    <td>
+                        <div class="image">
+                            <%= link_to (image_tag item.image_url, :style =>"height:40px"), item %>
+                        </div>
+                    </td>
+                    <!--<td class= "title"><%#= link_to (image_tag item.image_url, :style => "width=100%"), item %></td>-->
+                    <td class= "title"><%= link_to item.title, item %></td>
+                    <td class="price"><%= number_to_currency(item.price, :unit =>"€") %></td>
+                    <td class="title"><a href="/decrease/<%= item.id %>">-</a></td>
+                    <td class="quantity"><%= quantity %></td>
+                    <td class="title"><a href="/increase/<%= item.id %>">+</a></td>
+                    <td class="price"><%= number_to_currency(quantity * item.price, :unit =>"€") %></td>
+                    <td><a href="/remove/<%= item.id %>">Remove From Cart</a></td>
+                </tr>
+            
+                <% total += quantity*item.price %>
+            
+                <% end %>
+            
+                <!--<tr>
+                    <td>Grand Total: <%#= number_to_currency(total, :unit => "€") %></td>
+                </tr>-->
+                </table>
+                
+                <br>
+            
+                <div class="w3-cell-row w3-padding">
+                    <div class="w3-container w3-cell">
+                        <p></p>
+                    </div>
+                    <div class="w3-container w3-white w3-cell w3-border w3-border-black w3-round-xxlarge" style="width:40%">
+                        <p>Grand Total: <%= number_to_currency(total, :unit => "€") %></p>
+                    </div>
+                    <div class="w3-container w3-cell">
+                        <p></p>
+                    </div>
+                </div>
+            
+                <p> 
+                    <a href="/items" class="w3-button w3-blue w3-round-xxlarge w3-hover-red">Continue Shopping</a>
+                    <a href="/clearcart" class="w3-button w3-blue w3-round-xxlarge w3-hover-yellow">Clear Cart</a>
+                    <a href="/checkout" class="w3-button w3-blue w3-round-xxlarge w3-hover-pink">Confirm Order</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="w3-container w3-quarter"></div>
+</div>
